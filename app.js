@@ -30,3 +30,23 @@ function makeGrid() {
     };
 }
 
+//convert table to image            
+function convertToImage() {
+    var resultDiv = document.getElementById("result");
+    html2canvas(document.getElementById("pixelCanvas"), {
+        onrendered: function (canvas) {
+            var img = canvas.toDataURL("image/png");
+            result.innerHTML = '<a id="downloadExtesion" download="pixelArt.jpeg" href="' + img + '">pixelArt.jpeg</a>';
+            const downloadExtesion = document.querySelector("#downloadExtesion");
+            downloadExtesion.style.cssText = "color:black ; text-decoration:none; position:relative; top:110px";
+        }
+    });
+}
+
+
+
+//click event
+var convertBtn = document.getElementById("dowloadButton");
+convertBtn.addEventListener('click', convertToImage);
+
+
